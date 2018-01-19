@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  libev:
+    build: .
+    image: shadowsocks:libev
+    container_name: shadowsocks
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}/tcp"
+      - "${SERVER_PORT}:${SERVER_PORT}/udp"
+    env_file: .env
+    environment:
+      - SERVER_ADDR=$SERVER_ADDR
+      - SERVER_PORT=$SERVER_PORT
+      - METHOD=$METHOD
+      - PASSWORD=$PASSWORD
+      - TIMEOUT=$TIMEOUT
+      - DNS_ADDR=$DNS_ADDR
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"

@@ -58,5 +58,5 @@ CMD ss-server -s "$SERVER_ADDR" \
               -k "$PASSWORD"    \
               -t "$TIMEOUT"     \
               -d "$DNS_ADDR"    \
---mptcp
---fast-open $OPTIONS
+	      --mptcp 		\
+	      --fast-open $OPTIONS
